@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, ReactNode } from 'react';
-import type { MindmapContextType } from '@/types';
+import type { EquipmentNode, MindmapContextType } from '@/types';
 import { useSearch } from '@/hooks/useSearch';
 import { useExpandedNodes } from '@/hooks/useExpandedNodes';
 import { equipmentData } from '@/data/equipmentData';
+import { scoringData } from '@/data/scoringData';
 
 /**
  * Context untuk manage global state aplikasi mindmap
@@ -15,12 +16,20 @@ interface MindmapProviderProps {
 }
 
 export function MindmapProvider({ children }: Readonly<MindmapProviderProps>) {
+  const masterData = useMemo<EquipmentNode>(() => ({
+    id: 'archery-master-guide',
+    name: 'ARCHERY RULES MASTER GUIDE',
+    subtitle: 'Equipment & Scoring Reference',
+    color: 'bg-slate-50 border-slate-300',
+    children: [equipmentData, scoringData],
+  }), [equipmentData, scoringData]);
+
   const { 
     searchState, 
     setSearchTerm, 
     clearSearch, 
     getMatchingIds 
-  } = useSearch(equipmentData);
+  } = useSearch(masterData);
   
   const {
     expandedNodes,
@@ -28,7 +37,7 @@ export function MindmapProvider({ children }: Readonly<MindmapProviderProps>) {
     expandAll,
     collapseAll,
     setExpandedFromSearch
-  } = useExpandedNodes(equipmentData);
+  } = useExpandedNodes(masterData);
 
   // Auto-expand nodes yang match search
   useEffect(() => {
@@ -40,7 +49,7 @@ export function MindmapProvider({ children }: Readonly<MindmapProviderProps>) {
 
   // Memoize context value untuk prevent unnecessary re-renders
   const contextValue: MindmapContextType = useMemo(() => ({
-    equipmentData,
+    equipmentData: masterData,
     expandedNodes,
     searchState,
     toggleNode,
@@ -49,6 +58,7 @@ export function MindmapProvider({ children }: Readonly<MindmapProviderProps>) {
     setSearchTerm,
     clearSearch
   }), [
+    masterData,
     expandedNodes,
     searchState,
     toggleNode,

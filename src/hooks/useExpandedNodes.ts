@@ -7,7 +7,17 @@ import { getAllNodeIds } from '@/lib/utils';
  * Mengoptimalkan performance dengan memoization dan efficient updates
  */
 export function useExpandedNodes(equipmentData: EquipmentNode) {
-  const [expandedNodes, setExpandedNodes] = useState<ExpandedNodes>({});
+  const [expandedNodes, setExpandedNodes] = useState<ExpandedNodes>(() => {
+    const initial: ExpandedNodes = {
+      [equipmentData.id]: true,
+    };
+
+    if (equipmentData.children && equipmentData.children.length > 0) {
+      initial[equipmentData.children[0].id] = true;
+    }
+
+    return initial;
+  });
 
   // Memoize semua node IDs untuk performance
   const allNodeIds = useMemo(() => {

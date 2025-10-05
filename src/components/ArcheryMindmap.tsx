@@ -20,12 +20,12 @@ function MindmapHeader() {
       <div className="flex items-center justify-center gap-3 mb-3">
         <Target className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-          ARCHERY EQUIPMENT MASTER GUIDE
+          ARCHERY RULES MASTER GUIDE
         </h1>
       </div>
       
       <p className="text-base sm:text-lg text-gray-600 italic mb-6">
-        Complete Reference: World Archery Judge Guide Book
+        Equipment & Scoring Reference • World Archery Judge Guide Book 2024
       </p>
 
       {/* Info Panel */}
@@ -43,8 +43,8 @@ function MindmapHeader() {
               Setiap equipment dilengkapi dengan referensi Book & Chapter yang valid dari World Archery Rules.
             </p>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              <span className="font-bold text-red-600">BARU:</span> Section Equipment Inspection Procedure dengan 
-              step-by-step guide untuk judges!
+              <span className="font-bold text-red-600">BARU:</span> Mindmap Scoring System lengkap dengan 100+ use cases 
+              plus Equipment Inspection Procedure untuk judges!
             </p>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
               <span className="font-bold text-green-600">SEARCH:</span> Ketik kata kunci di search bar untuk filter equipment secara instan! 

@@ -1,14 +1,14 @@
 import type { EquipmentNode } from '@/types';
-import { scoringData } from './scoringData';
 
 /**
  * Data Equipment Archery berdasarkan World Archery Rules dan Judge Guidebook
  * Struktur data lengkap dengan referensi yang valid dan use case praktis
  */
 export const equipmentData: EquipmentNode = {
-  id: 'root',
+  id: 'equipment-master',
   name: 'ARCHERY EQUIPMENT MASTERY',
   subtitle: 'World Archery Rules Reference',
+  color: 'bg-blue-50 border-blue-300',
   children: [
     {
       id: 'inspection',
@@ -599,11 +599,6 @@ export const equipmentData: EquipmentNode = {
           specs: 'Bow sight max 5cm dari back face bow, full aluminium arrows only (1.2.1.8.1, 1.2.1.9)'
         }
       ]
-    },
-    {
-      ...scoringData,
-      id: 'scoring-system-archery',
-      color: scoringData.color ?? 'bg-orange-50 border-orange-300'
     }
   ]
 };
