@@ -1,4 +1,5 @@
 import type { EquipmentNode } from '@/types';
+import { scoringData } from './scoringData';
 
 /**
  * Data Equipment Archery berdasarkan World Archery Rules dan Judge Guidebook
@@ -598,6 +599,11 @@ export const equipmentData: EquipmentNode = {
           specs: 'Bow sight max 5cm dari back face bow, full aluminium arrows only (1.2.1.8.1, 1.2.1.9)'
         }
       ]
+    },
+    {
+      ...scoringData,
+      id: 'scoring-system-archery',
+      color: scoringData.color ?? 'bg-orange-50 border-orange-300'
     }
   ]
 };
